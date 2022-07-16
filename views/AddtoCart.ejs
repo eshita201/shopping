@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Add to Cart</title>
+    </head>
+    <body>
+        Hi <%=  user_email  %>
+
+        <h1>Cart</h1>
+        <table>
+            <tr>
+                <input type="text" placeholder="ProductId" name="ProductId" value="<%= cart.productId %>" id ="ProductId" required="required">
+                <input type="number" placeholder="Quantity" name ="Quantity" value="<%= cart.quantity %>"  id ="Quantity" required="required">
+                <input type="text" placeholder="Price" name ="Price" value="<%= cart.price %>"  id ="Price" required="required">
+                <input type="text" placeholder="User Id" name="User Id" value="<%= cart.userid %>" id ="Userid" required="required">
+            </tr>    
+         </table>    
+         <a href="/AllProduct">AllProducts</a>
+    </body>
+</html>

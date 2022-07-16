@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>All Product</title>
+    </head>
+    <body>
+   
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+        <link rel="stylesheet" href="css/index.css">
+
+            <h1>All Products </h1>
+            <ul>
+               
+                <li> <a href ='/index'>Home</a></li>
+            </ul>
+       
+           <form action="/" method="POST">    
+            <table> 
+                <tbody> 
+                    <% for(var i = 0; i < Products.length; i++) { %>
+                    <tr>
+                        <td><%= i + 1 %></td>
+                        <td><%= Products[i].Name %></td>
+                        <td><%= Products[i].Price %></td>
+                        <td><%= Products[i].Category %></td>
+                        
+                        <td>
+                            
+                            <img src="<%= Products[i].Image %>" alt="img" width="100" height="100">
+                       </td>
+                       <td>
+                            <a class="btn border-shadow update"  href="/UpdateProduct?id=<%= Products[i]._id%>">
+                                Edit
+                            </a>&nbsp;
+                        </td>
+                        <td>  
+                            <a class="p-1" value="<%= Products[i]._id%>">Delete </a> &nbsp;
+                        </td>
+                        <td>
+                            <a class="AddtoCart" value="<%= Products[i]._id%>"> Addtocart</a>
+                        </td>
+                      
+
+                    </tr>
+                    <% } %>
+                    <tr><td>
+                        <a class="GotoCart" href="/GotoCart"> Go To Cart</a>
+                    </td></tr>
+                    </tbody>
+             </table> 
+            </form> 
+              
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+            <script src="/js/index.js"></script>
+    </body>
+</html>

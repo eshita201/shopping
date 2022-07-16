@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Add Product</title>
+    </head>
+    <body>
+   
+        <h3>Hi  Email : <%= user_email  %></h2>
+
+            <h1>Add Product </h1>
+            <ul>
+                <li> <a href ='/AllProduct'>All Product</a></li>
+                <li> <a href ='/index'>Home</a></li>
+            </ul>
+
+            <form method="POST" action="/AddProduct" id="AddProduct" enctype="multipart/form-data">
+                <input type="text" placeholder="Name" name="Name"  id ="Name" required="required">
+                <input type="text" placeholder="Price" name ="Price"   id ="Price" required="required">
+                <input type="text" placeholder="Category" name ="Category"  id ="Category" required="required">
+                
+                <input type="file" name="image"  >
+                <button type="submit" class="addBtn">Add product</button>
+            </form>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+            <script src="/js/index.js"></script>
+    </body>
+</html>

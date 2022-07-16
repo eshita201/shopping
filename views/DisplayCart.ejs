@@ -1,0 +1,31 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+        <link rel="stylesheet" href="css/index.css">
+        <h1>Cart</h1>
+        <h3>Hi  <%= user_email %></h3>
+        <table> 
+            <tbody> 
+                <% for(var i = 0; i < cart.length; i++) { %>
+                <tr>
+                    <td><%= i + 1 %></td>
+                    <td><%= cart[i].productName %></td>
+                    <td><%= cart[i].quantity %></td>
+                    <td><%= cart[i].price %></td>
+                    <td><img src="<%= cart[i].productImage %>" width="100" height="100"></td>
+                </tr>
+                <% } %>
+                <tr><td>
+                    <a class="AllProduct" href="/AllProduct"> All Products</a>
+                </td></tr>
+            </tbody>
+        </table>
+
+            
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+        <script src="/js/index.js"></script>
+    </body>
+</html>

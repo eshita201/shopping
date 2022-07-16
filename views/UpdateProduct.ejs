@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Update Product</title>
+    </head>
+    <body>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+        <link rel="stylesheet" href="css/index.css">
+      
+        <h1>Update Product </h1>
+            <ul>
+                <li> <a href ='/AllProduct'>All Product</a></li>
+                <li> <a href ='/index'>Home</a></li>
+            </ul>
+
+            <form method="POST"  id="UpdateProduct">
+                <input type="text" placeholder="Name" name="Name" value="<%= Product.Name %>" id ="Name" required="required">
+                <input type="text" placeholder="Price" name ="Price" value="<%= Product.Price %>"  id ="Price" required="required">
+                <input type="text" placeholder="Category" name ="Category" value="<%= Product.Category %>"  id ="Category" required="required">
+               <img id="UpdateImage" src="<%= Product.Image %>"  value="<%= Product._id %>" width="100" height="100">
+               
+ 
+               <input type="hidden" name="id" value="<%= Product._id %>" >
+                <button type="submit" class="addBtn">Update product</button>
+            </form>
+            
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+            <script src="/js/index.js"></script>
+    </body>
+</html>
