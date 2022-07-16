@@ -21,7 +21,9 @@ app.set("view engine","ejs")
 app.use('/files', express.static("files"));
 app.use('/css', express.static(path.resolve(__dirname, "assets/css")))
 app.use('/js', express.static(path.resolve(__dirname, "assets/js")))
-app.use('/',require('./server/routes/routes'))
+app.use('/',require(path.resolve(__dirname,'./server/routes/routes')))
+
+
 connectDB();
 
 
