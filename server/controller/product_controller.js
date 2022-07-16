@@ -1,5 +1,5 @@
 const Products = require('../model/product_model');
-const Cart = require('../model/cart');
+const Cart = require('../model/Cart');
 const axios = require('axios')
 
 exports.find = (req, res)=>{
