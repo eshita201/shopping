@@ -75,6 +75,7 @@ routes.get('/GotoCart',product_controller.GotoCart);
 routes.get('/displayCart',(req,res)=>{res.render('DisplayCart')});
 
 
+
 /////////////////////////////Product Management ////////////////////////////////////////////////
 
 

@@ -123,17 +123,6 @@ exports.GotoCart = async(req,res)=>{
     console.log('Display cart function',req.session.user_id  );
     const userid = req.session.user_id;
 
-    Cart.find(  {"userid" : userid} )
-    .then(data =>{
-        if(!data){
-            res.status(404).send({ message : "Not found Cart with id "+ userid})
-        }else{
-          res.render('displayCart', {cart : data, user_id : req.session.user_id,
-            user_email : req.session.user_email} )     
-        }
-    })
-    .catch(err =>{
-        res.status(500).send({ message: "Erro retrieving user with id " + userid})
-    })
+    res.render('displayCart', {user_id : req.session.user_id, user_email : req.session.user_email}) 
 
 } 
