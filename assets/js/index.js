@@ -67,7 +67,25 @@ if(window.location.pathname == "/AllProduct"){
             }
         });
 
-   });
+
+
+        
+
+        $(".GotoCart").click(function(event){
+            
+            var id = $(this).attr("value")
+           console.log("id is => ", id)
+
+            
+          var request = {
+            "url" : `/api/displayproduct/${id}`,
+            "method" : "GET",
+    
+            }
+
+         });
+
+        });
 }
 
 if(window.location.pathname == "/index"){

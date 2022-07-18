@@ -72,7 +72,8 @@ routes.delete('/api/products/:id', product_controller.delete);
 //routes.get('/AddProductstoCart',auth.isLogin, services.AddProductstoCart);
 routes.post('/api/producttocart/:id',product_controller.AddProductstoCart);
 routes.get('/GotoCart',product_controller.GotoCart);
-routes.get('/displayCart',(req,res)=>{res.render('DisplayCart')});
+//routes.get('/api/displayproduct/:id',product_controller.GotoCarts);
+
 
 
 /////////////////////////////Product Management ////////////////////////////////////////////////

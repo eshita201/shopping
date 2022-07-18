@@ -15,7 +15,8 @@ exports.update_product =    (req, res) =>{
 exports.all_product = (req,res)=>{
         axios.get(process.env.siteUrl+'/api/products')
             .then(function(productData){
-                res.render("AllProduct", { Products : productData.data})
+                res.render("AllProduct", { Products : productData.data, user_id: req.session.user_id,
+                    user_email: req.session.user_email})
             })
             .catch(err =>{
                 res.send(err);

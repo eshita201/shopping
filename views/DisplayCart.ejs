@@ -10,14 +10,14 @@
         <table> 
             <tbody> 
                 <% for(var i = 0; i < cart.length; i++) { %>
-                <tr>
-                    <td><%= i + 1 %></td>
-                    <td><%= cart[i].productName %></td>
-                    <td><%= cart[i].quantity %></td>
-                    <td><%= cart[i].price %></td>
-                    <td><img src="<%= cart[i].productImage %>" width="100" height="100"></td>
-                </tr>
-                <% } %>
+                    <tr>
+                        <td><%= i + 1 %></td>
+                        <td><%= cart[i].productName %></td>
+                        <td><%= cart[i].quantity %></td>
+                        <td><%= cart[i].price %></td>
+                        <td><img src="<%= cart[i].productImage %>" width="100" height="100"></td>
+                    </tr>
+                    <% } %>
                 <tr><td>
                     <a class="AllProduct" href="/AllProduct"> All Products</a>
                 </td></tr>
