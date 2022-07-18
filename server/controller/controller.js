@@ -13,8 +13,10 @@ exports.register = (req,res) =>{
         }
         const user =new Users({
             email: req.body.email,
+            address: req.body.address,
             pass: hashedPass,
-            isAdmin: 'N'
+            isAdmin: 'N',
+            totalAmount: 0
         })
 
 

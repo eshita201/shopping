@@ -10,7 +10,14 @@ var userSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    isAdmin : String
+    isAdmin : { 
+        type: String
+     },
+    totalAmount :{
+        type: Number},
+    address :{
+        type:String
+    }    
 
 })
 

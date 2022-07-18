@@ -1,0 +1,33 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+        <link rel="stylesheet" href="css/index.css">
+        <h1>Order</h1>
+        <h3>Hi  <%= user_email %></h3>
+        <ul>
+            <li> <a href ='/AllProduct'>All Product</a></li>
+            <li> <a href ='/DisplayCart'>Cart</a></li>
+            <li> <a href ='/index'>Home</a></li>
+        </ul>
+
+        <table>
+        <tr><td>Total Amount</td><td><%= totalamount %></td></tr>
+        <tr><td>Address</td><td>
+            <%if(!useraddress){ %>
+              add address
+              </form>
+            <% } else {%>
+                <%=useraddress%>
+         <%}%>
+        </td></tr>
+        </table>
+
+       
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+        <script src="/js/index.js"></script>
+    </body>
+</html>    
