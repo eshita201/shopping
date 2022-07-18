@@ -124,7 +124,7 @@ exports.GotoCart = async(req,res)=>{
     const usermail = req.session.user_email;
   //  const _id = req.params.id;
     //console.log
-    res.render('displayCart',{user_email : usermail})
+    res.render('DisplayCart',{user_email : usermail})
     //, {user_id : req.session.user_id, user_email : req.session.user_email}) 
 
 } 
