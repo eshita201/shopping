@@ -1,5 +1,6 @@
 const Products = require('../model/product_model');
 const Cart = require('../model/Cart');
+const User = require('../model/model');
 const axios = require('axios')
 
 exports.find = (req, res)=>{
@@ -89,12 +90,16 @@ exports.AddProductstoCart = async(req,res)=>
             console.log("Reached inside Add Product to cart Function ");
             console.log('Add to cart function');
             const _id = req.params.id;
-            console.log("Id is =>  ", _id);
+           
            
             const products = await Products.findOne({_id}).lean()
             console.log("Prodcut is =>  ", products._id , "  ", products.Price  , " ", req.session.user_id);
           
-          
+            const email = req.session.user_email
+            
+            const finduser = await User.findOne({email}).lean()
+
+         
             const cart = new Cart({
                 productId: products._id,
                 productName: products.Name,
@@ -104,7 +109,19 @@ exports.AddProductstoCart = async(req,res)=>
                 useremail: req.session.user_email,
                 productImage: products.Image
             });
-          
+            const user_id= req.session.user_id;
+            const totals = products.Price+ finduser.totalAmount;
+            User.findByIdAndUpdate(user_id, { 
+                totalAmount: totals }, 
+                function (err, docs) {
+                if (err){
+                    console.log(err)
+                }
+                else{
+                    console.log("Updated User : ", docs);
+                }
+            });
+
             cart.save().then(data=>{
                 res.send({
                     message : "Product was added to cart successfully!"
@@ -123,16 +140,67 @@ exports.GotoCart = async(req,res)=>{
     console.log('Display cart function',req.session.user_id  );
     const usermail = req.session.user_email;
     const userid = req.session.user_id;
+    const email = req.session.user_email;
+            
+    const finduser = await User.findOne({email}).lean();
+    console.log("total amount ", finduser.totalAmount);
     Cart.find(  {"userid" : userid} )
     .then(data =>{
         if(!data){
             res.status(404).send({ message : "Not found Cart with id "+ userid})
         }else{
           res.render('DisplayCart', {cart : data, user_id : req.session.user_id,
-            user_email : req.session.user_email} )     
+            user_email : req.session.user_email,totalamount:finduser.totalAmount } )     
         }
     })
     .catch(err =>{
         res.status(500).send({ message: "Erro retrieving user with id " + userid})
     })
+
 } 
+
+exports.placeorder = async(req,res)=>{
+    console.log('Order  function',req.session.user_id  );
+    const email = req.session.user_email;
+    const finduser = await User.findOne({email}).lean();
+    const userid = req.session.user_id;
+    const useraddress = finduser.address;
+    Cart.find(  {"userid" : userid} )
+    .then(data =>{
+        if(!data){
+            res.status(404).send({ message : "Not found Cart with id "+ userid})
+        }else{
+          res.render('placeorder', {cart : data, user_id : req.session.user_id,
+            user_email : req.session.user_email,totalamount:finduser.totalAmount,
+            useraddress: finduser.address} )     
+        }
+    })
+    .catch(err =>{
+        res.status(500).send({ message: "Erro retrieving user with id " + userid})
+    })
+
+}
+/*exports.addaddress = async(req,res)=> {
+    console.log('Reached here to update from id')
+    if(!req.body){
+        return res
+            .status(400)
+            .send({ message : "Data to update can not be empty"})
+    }
+    const id = req.params.id;
+    console.log(req.params.id)
+    console.log("req.body => " ,req.body);
+    User.findByIdAndUpdate(id, {address: req.body}, { useFindAndModify: false})
+        .then(data => {
+            if(!data){
+                res.status(404).send({ message : `Cannot Update product with ${id}. Maybe product not found!`})
+            }else{
+     
+                res.send(data)
+            }
+        })
+        .catch(err =>{
+            res.status(500).send({ message : "Error Update product information"})
+        })
+
+}*/

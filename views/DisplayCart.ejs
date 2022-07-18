@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="css/index.css">
         <h1>Cart</h1>
         <h3>Hi  <%= user_email %></h3>
+       
         <table> 
             <tbody> 
                 <% for(var i = 0; i < cart.length; i++) { %>
@@ -15,12 +16,16 @@
                         <td><%= cart[i].productName %></td>
                         <td><%= cart[i].quantity %></td>
                         <td><%= cart[i].price %></td>
+                        
                         <td><img src="<%= cart[i].productImage %>" width="100" height="100"></td>
                     </tr>
                     <% } %>
-                <tr><td>
-                    <a class="AllProduct" href="/AllProduct"> All Products</a>
-                </td></tr>
+                    <tr><td> </td><td> </td><td>Total :=> </td><td><%= totalamount %></td></tr>
+                <tr><td><a class="AllProduct" href="/AllProduct"> All Products</a></td>
+                    <td><a class="PlaceOrder" href="/placeorder"> Place Order</a></td>
+                 </tr>
+
+                
             </tbody>
         </table>
 

@@ -7,7 +7,7 @@ var productSchema = mongoose.Schema({
         unique: true
     },
     Price:{
-        type: String,
+        type: Number,
         required: true
     },
     Category:{

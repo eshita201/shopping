@@ -24,14 +24,17 @@
             <ul>
                 <li> <a href ='/AllProduct'>All Product</a></li>
                 <li> <a href ='/AddProduct'>Add Product</a></li>
+          
                 </ul>
 
         <% } %>    
         <% if(user_adminCheck === 'N'){ %>
-        
+            <li> <a  href="/GoToCart" > Go To Cart</a></li>
+
+            <table>
             
             <% for(var i = 0; i < Products.length; i++) { %>
-                <table>
+               
                     <tr>
                         <td><%= i + 1 %></td>
                         <td><%= Products[i].Name %></td>
@@ -44,9 +47,10 @@
                             <a class="AddtoCart" value="<%= Products[i]._id%>"> Addtocart</a>
                         </td>
                     </tr>
-                </table>
+              
             <% } %>
-
+           
+        </table>
         <% } %>  
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>

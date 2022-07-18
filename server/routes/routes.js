@@ -72,6 +72,8 @@ routes.delete('/api/products/:id', product_controller.delete);
 //routes.get('/AddProductstoCart',auth.isLogin, services.AddProductstoCart);
 routes.post('/api/producttocart/:id',product_controller.AddProductstoCart);
 routes.get('/GotoCart',product_controller.GotoCart);
+routes.get('/placeorder',product_controller.placeorder);
+//routes.put('/api/addaddress/:id',product_controller.addaddress);
 //routes.get('/api/displayproduct/:id',product_controller.GotoCarts);
 
 

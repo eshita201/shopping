@@ -63,6 +63,7 @@ if(window.location.pathname == "/AllProduct"){
             if(confirm("Do you really want to add this product to cart?")){
                 $.ajax(request).done(function(response){
                 alert("Data Added to cart Successfully!");
+                location.reload();
             })
             }
         });
@@ -76,7 +77,7 @@ if(window.location.pathname == "/AllProduct"){
             var id = $(this).attr("value")
            console.log("id is => ", id)
 
-            
+          
           var request = {
             "url" : `/api/displayproduct/${id}`,
             "method" : "GET",
@@ -102,12 +103,51 @@ if(window.location.pathname == "/index"){
             
                 }
             
-                if(confirm("Do you really want to add this product to cart?")){
-                    $.ajax(request).done(function(response){
-                    alert("Data Added to cart Successfully!");
+                $.ajax(request).done(function(response){
+                    alert("Product Added Successfully!");
+                    location.reload();
                 })
-                }
             });  
+
+
+
+
+        });
+
+}
+
+if(window.location.pathname == "/placeorder"){
+
+  
+    $(document).ready(function () {
+            $(".addaddress").submit(function(event){
+
+                event.preventDefault();
+
+                var unindexed_array = $(this).serializeArray();
+                var data = {}
+            
+                $.map(unindexed_array, function(n, i){
+                    data[n['name']] = n['value']
+                })
+                
+                
+               var request = {
+                    "url" : `/api/addaddress/${data.id}`,
+                    "method" : "PUT",
+                    "data" : data
+                }
+               
+                $.ajax(request).done(function(response){
+                    alert("Address added Successfully!");
+                    location.reload();
+                })
+               
+            });  
+
+
+
+
         });
 
 }
