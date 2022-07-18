@@ -123,7 +123,6 @@ exports.GotoCart = async(req,res)=>{
     console.log('Display cart function',req.session.user_id  );
     const userid = req.session.user_id;
 
-  
     Cart.find(  {"userid" : userid} )
     .then(data =>{
         if(!data){
