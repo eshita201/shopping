@@ -24,13 +24,13 @@
             <ul>
                 <li> <a href ='/AllProduct'>All Product</a></li>
                 <li> <a href ='/AddProduct'>Add Product</a></li>
-          
+                <li> <a href ='/Allorders'>All orders</a></li>
                 </ul>
 
         <% } %>    
         <% if(user_adminCheck === 'N'){ %>
             <li> <a  href="/GoToCart" > Go To Cart</a></li>
-
+            <li> <a href ='/Allorders'>All orders</a></li>  
             <table>
             
             <% for(var i = 0; i < Products.length; i++) { %>

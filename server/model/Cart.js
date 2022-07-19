@@ -31,6 +31,17 @@ var cartSchema = mongoose.Schema({
     productImage:
     {
         type:String
+    },
+    paymentStatus:
+    {
+        type:String
+    },
+    orderId:
+    {
+        type:String
+    },
+    Deliverystatus:{
+        type:String
     }
 })
 
