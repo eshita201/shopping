@@ -118,36 +118,28 @@ if(window.location.pathname == "/index"){
 
 if(window.location.pathname == "/placeorder"){
 
-  
+  //  $("#rzp-button1").hide();
     $(document).ready(function () {
-            $(".addaddress").submit(function(event){
-
-                event.preventDefault();
-
-                var unindexed_array = $(this).serializeArray();
-                var data = {}
+            $("#checkouts").click(function(event){
+                
+                console.log('reached in checkout index js function')
+                var id = $(this).attr("value")
+                console.log("vale is : ", id)
+                var request = {
+                    "url" : `/checkout/${id}`,
+                    "method" : "GET",
             
-                $.map(unindexed_array, function(n, i){
-                    data[n['name']] = n['value']
-                })
-                
-                
-               var request = {
-                    "url" : `/api/addaddress/${data.id}`,
-                    "method" : "PUT",
-                    "data" : data
                 }
-               
                 $.ajax(request).done(function(response){
-                    alert("Address added Successfully!");
+                    alert("Product Added Successfully!");
                     location.reload();
                 })
-               
+                 
             });  
-
-
-
-
+            
+         
         });
 
+
+   
 }

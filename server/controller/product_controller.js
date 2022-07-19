@@ -2,6 +2,7 @@ const Products = require('../model/product_model');
 const Cart = require('../model/Cart');
 const User = require('../model/model');
 const axios = require('axios')
+const Razorpay = require('razorpay');
 
 exports.find = (req, res)=>{
 
@@ -107,7 +108,10 @@ exports.AddProductstoCart = async(req,res)=>
                 price: products.Price,
                 userid:  req.session.user_id,
                 useremail: req.session.user_email,
-                productImage: products.Image
+                productImage: products.Image,
+                paymentStatus: 'Unpaid',
+                orderId: 'Blank',
+                Deliverystatus: 'Undelivered'
             });
             const user_id= req.session.user_id;
             const totals = products.Price+ finduser.totalAmount;
@@ -172,35 +176,32 @@ exports.placeorder = async(req,res)=>{
         }else{
           res.render('placeorder', {cart : data, user_id : req.session.user_id,
             user_email : req.session.user_email,totalamount:finduser.totalAmount,
-            useraddress: finduser.address} )     
+            useraddress: finduser.address} ) 
+            
+            
         }
     })
     .catch(err =>{
         res.status(500).send({ message: "Erro retrieving user with id " + userid})
     })
 
-}
-/*exports.addaddress = async(req,res)=> {
-    console.log('Reached here to update from id')
-    if(!req.body){
-        return res
-            .status(400)
-            .send({ message : "Data to update can not be empty"})
-    }
-    const id = req.params.id;
-    console.log(req.params.id)
-    console.log("req.body => " ,req.body);
-    User.findByIdAndUpdate(id, {address: req.body}, { useFindAndModify: false})
-        .then(data => {
-            if(!data){
-                res.status(404).send({ message : `Cannot Update product with ${id}. Maybe product not found!`})
-            }else{
-     
-                res.send(data)
-            }
-        })
-        .catch(err =>{
-            res.status(500).send({ message : "Error Update product information"})
-        })
 
-}*/
+}
+
+
+exports.findorders = async(req, res)=>{
+   
+
+      //  console.log("email is :=>", email);
+        //"paymentStatus": 'Paid',
+        Cart.find({"paymentStatus": 'Paid'})
+            .then(cart => {
+                res.send(cart)
+            })
+            .catch(err => {
+                res.status(500).send({ message : err.message || "Error Occurred while retriving user information" })
+            })
+    
+
+    
+}

@@ -10,7 +10,9 @@
        
         <table> 
             <tbody> 
-                <% for(var i = 0; i < cart.length; i++) { %>
+                <% for(var i = 0; i < cart.length; i++) { 
+                    if(cart[i].paymentStatus === 'Unpaid'){
+                    %>
                     <tr>
                         <td><%= i + 1 %></td>
                         <td><%= cart[i].productName %></td>
@@ -19,7 +21,7 @@
                         
                         <td><img src="<%= cart[i].productImage %>" width="100" height="100"></td>
                     </tr>
-                    <% } %>
+                    <% } }%>
                     <tr><td> </td><td> </td><td>Total :=> </td><td><%= totalamount %></td></tr>
                 <tr><td><a class="AllProduct" href="/AllProduct"> All Products</a></td>
                     <td><a class="PlaceOrder" href="/placeorder"> Place Order</a></td>

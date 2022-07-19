@@ -34,3 +34,13 @@ exports.AddProductstoCart = (req,res)=>{
             res.send(err);
         })
 }
+exports.all_orders = (req,res)=>{
+    axios.get(process.env.siteUrl+'/api/orders')
+        .then(function(cart){
+            res.render("Allorders", { Orders : cart.data, user_id: req.session.user_id,
+                user_email: req.session.user_email})
+        })
+        .catch(err =>{
+            res.send(err);
+        })
+}
